@@ -29,7 +29,7 @@ sudo cp /etc/letsencrypt/live/dev1.cyberbunny.online/fullchain.pem message/
 # npm install
 
 # Iniciar el servidor
-# npm run start
+npm run start
 
 # Comprobar que el servidor se ha iniciado correctamente
-# curl -k https://dev1.cyberbunny.online:3000/
+curl -k https://dev1.cyberbunny.online:3000/
