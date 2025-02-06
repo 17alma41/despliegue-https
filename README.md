@@ -51,6 +51,9 @@ npm run start
 ### Pasos para despliegue HTTPS
 
 1. En nuestra terminal iniciamos el archivo llamado `deploy.sh`.
+```bash
+./deploy.sh
+```
 
 2. Dentro tendremos que mover los certificados a la raiz de la carpeta del proyecto
 ```bash
