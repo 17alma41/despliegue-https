@@ -7,7 +7,7 @@ sudo apt update
 sudo apt install -y certbot
 
 # Obtener certificados SSL para tu dominio
-sudo certbot certonly --standalone -d dev1.cyberbunny.online
+sudo certbot certonly --standalone -d dev1.cyberbunny.online --non-interactive --agree-tos -m 17alma41@gmail.com
 
 # Crear directorio para almacenar los certificados
 mkdir -p message
