@@ -47,3 +47,27 @@ npm run start
 
 6. Comprobar que se ha iniciado correctamente:
 `http://dev1.cyberbunny.online:3000/`
+
+### Pasos para despliegue HTTPS
+
+1. En nuestra terminal iniciamos el archivo llamado `deploy.sh`.
+
+2. Dentro tendremos que mover los certificados a la raiz de la carpeta del proyecto
+```bash
+ls
+mv message/* .
+```
+
+3. En nuestro `index.js` tendremos que tener la ruta específica:
+```js
+    key: fs.readFileSync(path.join(__dirname, 'privkey.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'fullchain.pem'))
+```
+
+4. Por último inicia tu servidor
+```bash
+npm run start
+```
+Captura para verificar que tenemos https en nuestra web:
+
+![No aparece la imagen](./images/captura_https.jpg)
