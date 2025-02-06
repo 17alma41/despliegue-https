@@ -41,8 +41,8 @@ app.post('/message', (req, res) => {
 })
 
 const options = {
-  key: fs.readFileSync(path.join(__dirname, 'message/privkey.pem')),
-  cert: fs.readFileSync(path.join(__dirname, 'message/fullchain.pem'))
+  key: fs.readFileSync(path.join(__dirname, 'privkey.pem')),
+  cert: fs.readFileSync(path.join(__dirname, 'fullchain.pem'))
 };
 
 https.createServer(options, app).listen(3000, () => {
