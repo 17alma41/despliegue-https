@@ -16,4 +16,34 @@ La `APIKEY` inicialmente irá hardcodeada en el servidor.
 
 ## Despliegue HTTP
 
-Una vez tengas la aplicación funcionando, conectate a tu VPS, clona el repositorio y despliega la apliacación.
+Una vez tengas la aplicación funcionando, conectate a tu VPS, clona el repositorio y despliega la aplicación.
+
+### Pasos
+
+1. Abrir la teminal y introducir lo siguiente:
+```bash
+ssh root@172.233.120.218
+```
+
+2. Actualizar
+```bash
+sudo apt update
+```
+
+3. Clonar el repositorio
+```bash
+git clone
+```
+
+4. Instalar dependencias
+```bash
+npm install
+```
+
+5. Iniciar servidor
+```bash
+npm run start
+```
+
+6. Comprobar que se ha iniciado correctamente:
+`http://dev1.cyberbunny.online:3000/`

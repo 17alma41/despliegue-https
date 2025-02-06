@@ -6,7 +6,7 @@ const {getMessages, addMessage} = require('./database.js');
 const APIKEY = "123456";
 
 app.get('/', (req, res) => {
-  res.send('Hola Mundo!');
+  res.send('Bienvenido al despliegue del servidor de Alvaro!');
 })
 
 app.get('/message', (req, res) => {    
@@ -14,8 +14,10 @@ app.get('/message', (req, res) => {
    const apikey = req.headers['apikey'];
    if (apikey !== APIKEY){
      return res.status(401).send('Unauthorized');
+    }else if (apikey === APIKEY){
+      res.json(getMessages());
+      return res.status(200).send('OK');  
    }
-   res.json(getMessages());
 })
 
 app.post('/message', (req, res) => {    
@@ -24,7 +26,9 @@ app.post('/message', (req, res) => {
   if (apikey !== APIKEY) {
     return res.status(401).send('Unauthorized');
   }
-  const message = req.body.message;
+
+  // Manda el mensaje por la query y lo añadade a la BBDD
+  const message = req.body.message;  
   if (message) {
     addMessage(message);
     res.status(201).send('Message added');
