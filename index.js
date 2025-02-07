@@ -1,10 +1,14 @@
+// require('dotenv').config(); // Cargar variables de entorno, se puede settear desde terminal 'export NODE_ENV="dev"'
 const express = require('express');
 const fs = require('fs');
 const https = require('https');
+const http = require('http');
+const path = require('path');
+const {getMessages, addMessage} = require('./database.js');
+
+const port = 3000;
 const app = express();
 app.use(express.json());
-const {getMessages, addMessage} = require('./database.js');
-const path = require('path');
 
 const APIKEY = "123456";
 
@@ -40,11 +44,23 @@ app.post('/message', (req, res) => {
   }
 })
 
-const options = {
-  key: fs.readFileSync(path.join(__dirname, 'privkey.pem')),
-  cert: fs.readFileSync(path.join(__dirname, 'fullchain.pem'))
-};
+console.log(process.env.NODE_ENV); // Process.env busca la variable de entorno NODE_ENV en el proyecto
+if(process.env.NODE_ENV === 'production'){
 
-https.createServer(options, app).listen(3000, () => {
-  console.log('Server started on https://dev1.cyberbunny.online:3000');
-});
+  const options = {
+    key: fs.readFileSync(path.join(__dirname, 'privkey.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'fullchain.pem'))
+  };
+
+  // Crear el servidor HTTPS
+  https.createServer(options, app).listen(port, () => {
+    console.log(`Server started on https://dev1.cyberbunny.online:${port}`);
+  });
+  
+}else{
+
+  // Crear el servidor HTTP
+  http.createServer(app).listen(port, () => {
+    console.log(`Server started on http://localhost:${port}`);
+  });
+}
