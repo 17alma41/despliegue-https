@@ -16,12 +16,12 @@ const APIKEY = "123456";
 // CORS middleware
 //app.use(cors());
 
-/*
+
 const corsOptions = {
-  origin: 'https://dev1.cyberbunny.online:3000',//(https://your-client-app.com)
+  origin: ['https://dev1.cyberbunny.online:3000', 'https://alma17.neocities.org/practica_vps'],
   optionsSuccessStatus: 200,
 };
-*/
+
 
 // app.use(cors(corsOptions)); // Se puede añadir a todas las rutas
 
