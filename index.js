@@ -13,9 +13,9 @@ app.use(express.json());
 
 const APIKEY = "123456";
 
-// CORS middleware
-app.use(cors());
+app.use(cors()); // Se puede añadir a todas las rutas
 
+// CORS middleware
 /*
 const corsOptions = {
   origin: ['https://dev1.cyberbunny.online:3000', 'https://alma17.neocities.org/practica_vps'],
