@@ -26,7 +26,7 @@ const corsOptions = {
 // app.use(cors(corsOptions)); // Se puede añadir a todas las rutas
 
 
-app.get('/', cors(), (req, res) => {
+app.get('/', (req, res) => {
   res.send('Bienvenido al despliegue del servidor de Alvaro!');
 })
 
