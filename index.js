@@ -4,6 +4,7 @@ const fs = require('fs');
 const https = require('https');
 const http = require('http');
 const path = require('path');
+const cors = require('cors');
 const {getMessages, addMessage} = require('./database.js');
 
 const port = 3000;
@@ -12,7 +13,20 @@ app.use(express.json());
 
 const APIKEY = "123456";
 
-app.get('/', (req, res) => {
+// CORS middleware
+//app.use(cors());
+
+/*
+const corsOptions = {
+  origin: 'https://dev1.cyberbunny.online:3000',//(https://your-client-app.com)
+  optionsSuccessStatus: 200,
+};
+*/
+
+// app.use(cors(corsOptions)); // Se puede añadir a todas las rutas
+
+
+app.get('/', cors(corsOptions), (req, res) => {
   res.send('Bienvenido al despliegue del servidor de Alvaro!');
 })
 
