@@ -74,3 +74,29 @@ npm run start
 Captura para verificar que tenemos https en nuestra web:
 
 ![No aparece la imagen](./images/captura_https.jpg)
+
+### Logs
+
+Ver log de mi servidor
+```bash
+cat /var/log/auth.log 
+```
+
+Y para filtrar palabras
+```bash
+| grep "Accepted"
+```
+
+Analizar alertas
+```bash
+cat /var/log/snort/snort.alert.fast
+```
+O analiza continuamente
+```bash
+cat tail -f /var/log/snort/snort.alert.fast
+```
+
+Reconocimiento de servicios
+```bash
+cat nmap {IP}
+```
