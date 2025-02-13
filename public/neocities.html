@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica VPS</title>
+</head>
+<body>
+    <div id="content"></div>
+</body>
+<script>
+    function fetchAndDisplay(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                const pre = document.createElement('pre');
+                pre.innerText = JSON.stringify(data, null, 2);
+                document.querySelector("#content").appendChild(pre);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
+
+    const urls = [
+        'http://dev1.cyberbunny.online:3000/messages',
+        'http://dev2.cyberbunny.online:3000/messages',
+        'http://dev3.cyberbunny.online:3000/messages',
+        'http://dev4.cyberbunny.online:3000/messages',
+        'http://dev5.cyberbunny.online:3000/messages'
+    ];
+
+    urls.forEach(url => fetchAndDisplay(url));
+</script>
+</html>

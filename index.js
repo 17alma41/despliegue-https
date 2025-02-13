@@ -10,6 +10,7 @@ const {getMessages, addMessage} = require('./database.js');
 const port = 3000;
 const app = express();
 app.use(express.json());
+app.use(express.static('public'));
 
 const APIKEY = "123456";
 
@@ -23,14 +24,13 @@ const corsOptions = {
 };
 */
 
-// app.use(cors(corsOptions)); // Se puede añadir a todas las rutas
-
+// app.use(cors(corsOptions)); // Se puede añadir a todas las ruta
 
 app.get('/', (req, res) => {
   res.send('Bienvenido al despliegue del servidor de Alvaro!');
 })
 
-app.get('/message', (req, res) => {    
+app.get('/messages', (req, res) => {    
    // Devolver mensajes alamacenados en la BBDD
    const apikey = req.headers['apikey'];
    if (apikey !== APIKEY){
@@ -41,7 +41,7 @@ app.get('/message', (req, res) => {
    }
 })
 
-app.post('/message', (req, res) => {    
+app.post('/messages', (req, res) => {    
    // Guardar mensajes en la BBDD
    const apikey = req.headers['apikey'];
   if (apikey !== APIKEY) {
@@ -58,6 +58,7 @@ app.post('/message', (req, res) => {
   }
 })
 
+addMessage("Este es un mensaje hardcodeado");
 console.log(process.env.NODE_ENV); // Process.env busca la variable de entorno NODE_ENV en el proyecto
 if(process.env.NODE_ENV === 'production'){
 
@@ -75,6 +76,6 @@ if(process.env.NODE_ENV === 'production'){
 
   // Crear el servidor HTTP
   http.createServer(app).listen(port, () => {
-    console.log(`Server started on http://localhost:${port}`);
+    console.log(`Server started on http://localhost:${port} o http://yourIP:${port}`);
   });
 }
