@@ -77,26 +77,43 @@ Captura para verificar que tenemos https en nuestra web:
 
 ### Logs
 
-Ver log de mi servidor
+Ver log de mi servidor:
 ```bash
 cat /var/log/auth.log 
 ```
 
-Y para filtrar palabras
+Y para filtrar palabras:
 ```bash
 | grep "Accepted"
 ```
 
-Analizar alertas
+Analizar alertas:
 ```bash
 cat /var/log/snort/snort.alert.fast
 ```
-O analiza continuamente
+O analiza continuamente:
 ```bash
 cat tail -f /var/log/snort/snort.alert.fast
 ```
 
-Reconocimiento de servicios
+Reconocimiento de servicios:
 ```bash
 cat nmap {IP}
+```
+
+Pregunta al DNS por diferentes aspectos del servidor:
+```bash
+dig dev1.cyberbunny.online
+```
+
+### Monitoreo con Uptime Kuma
+
+Comando para levantar Uptime Kuma:
+```bash
+docker run -d --restart=always -p 3001:3001 -v uptime-kuma:/app/data --name uptime-kuma louislam/uptime-kuma:1
+```
+
+Comprobar docker y puerto (normalmente :3001):
+```bash
+docker ps -a
 ```
